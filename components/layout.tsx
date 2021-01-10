@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
-import { configs } from '../lib/configs';
+import configs from '../lib/configs';
 
 const Layout = ({
   children,

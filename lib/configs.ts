@@ -1,3 +1,5 @@
-export const configs = {
-  siteTitle: "The Coding Dead",
-}
+const configs = {
+  siteTitle: 'The Coding Dead',
+};
+
+export default configs;
