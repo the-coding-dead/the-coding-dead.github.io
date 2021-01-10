@@ -6,7 +6,11 @@ import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 
 const Post = ({ postData }: { postData: PostData }) => (
-  <Layout home>
+  <Layout
+    home={false}
+    title={postData.title}
+    description={postData.description}
+  >
     <>
       <Head>
         <title>{postData.title}</title>

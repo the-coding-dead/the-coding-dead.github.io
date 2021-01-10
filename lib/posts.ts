@@ -13,6 +13,7 @@ export type PostData = {
 
   title?: string;
   date?: string;
+  description?: string;
 };
 
 export const getSortedPostsData = () => {

@@ -6,22 +6,24 @@ import configs from '../lib/configs';
 const Layout = ({
   children,
   home = false,
+  title = '',
+  description = '',
 }: {
   children: JSX.Element;
   home: boolean;
+  title?: string;
+  description?: string;
 }) => (
   <div className={styles.container}>
     <Head>
       <link rel="icon" href="/favicon.ico" />
+      <meta name="description" content={description || configs.description} />
+      <meta property="og:image" content={configs.ogImage} />
+      <meta name="og:title" content={title || configs.siteTitle} />
       <meta
-        name="description"
-        content={configs.siteTitle}
+        name="og:description"
+        content={description || configs.description}
       />
-      <meta
-        property="og:image"
-        content={configs.ogImage}
-      />
-      <meta name="og:title" content={configs.siteTitle} />
       <meta name="twitter:card" content="summary" />
     </Head>
     <main>{children}</main>
