@@ -22,7 +22,7 @@ const Layout = ({
         content={configs.ogImage}
       />
       <meta name="og:title" content={configs.siteTitle} />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
     </Head>
     <main>{children}</main>
     {!home && (
