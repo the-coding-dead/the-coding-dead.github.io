@@ -19,7 +19,7 @@ const Layout = ({
       />
       <meta
         property="og:image"
-        content="https://raw.githubusercontent.com/the-coding-dead/the-coding-dead.github.io/main/public/images/og-image.svg"
+        content={configs.ogImage}
       />
       <meta name="og:title" content={configs.siteTitle} />
       <meta name="twitter:card" content="summary_large_image" />
