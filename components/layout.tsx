@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import styles from './layout.module.css';
 import configs from '../lib/configs';
 
 const Layout = ({
@@ -14,7 +13,7 @@ const Layout = ({
   title?: string;
   description?: string;
 }) => (
-  <div className={styles.container}>
+  <div className="container mx-auto px-4">
     <Head>
       <link rel="icon" href="/favicon.ico" />
       <meta name="description" content={description || configs.description} />
@@ -28,7 +27,7 @@ const Layout = ({
     </Head>
     <main>{children}</main>
     {!home && (
-      <div className={styles.backToHome}>
+      <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
         <Link href="/">← Back to home</Link>
       </div>
     )}

@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Layout from '../../components/layout';
 import { getAllPostIds, getPostData, PostData } from '../../lib/posts';
 import Date from '../../components/date';
-import utilStyles from '../../styles/utils.module.css';
 
 const Post = ({ postData }: { postData: PostData }) => (
   <Layout
@@ -16,8 +15,8 @@ const Post = ({ postData }: { postData: PostData }) => (
         <title>{postData.title}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
+        <h1 className="text-4xl tracking-tight font-extrabold">{postData.title}</h1>
+        <div className="mb-4">
           <Date dateString={postData.date} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
