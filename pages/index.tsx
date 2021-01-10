@@ -1,7 +1,8 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout, { siteTitle } from '../components/layout';
+import Layout from '../components/layout';
+import { configs } from '../lib/configs';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData, PostData } from '../lib/posts';
 import Date from '../components/date';
@@ -10,19 +11,12 @@ const Home = ({ allPostsData }: { allPostsData: PostData[] }) => (
   <Layout home>
     <>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{configs.siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>I am fucking boy</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in
-          {' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>
-          .)
-        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <h2 className={utilStyles.headingLg}>{configs.siteTitle}</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
