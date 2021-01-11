@@ -1,35 +1,19 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
 import Layout from '../components/layout';
-import configs from '../lib/configs';
 import { getSortedPostsData, PostData } from '../lib/posts';
-import Date from '../components/date';
+import HeadLine from '../components/headline';
 
 const Home = ({ allPostsData }: { allPostsData: PostData[] }) => (
-  <Layout home>
-    <>
-      <Head>
-        <title>{configs.siteTitle}</title>
-      </Head>
-      <section className="">
-        <h2 className="text-4xl tracking-tight font-extrabold">{configs.siteTitle}</h2>
-        <ul className="mt-2">
-          {allPostsData.map(({ id, date, title }) => (
-            <li className="" key={id}>
-              <div className="text-3xl">
-                {' '}
-                <Link href={`/posts/${id}`}>{title}</Link>
-                {' '}
-              </div>
-              <small className="">
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </>
+  <Layout>
+    <section>
+      <ul className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        {allPostsData.map((postData) => (
+          <li key={postData.id}>
+            <HeadLine postData={postData} />
+          </li>
+        ))}
+      </ul>
+    </section>
   </Layout>
 );
 

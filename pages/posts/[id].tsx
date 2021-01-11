@@ -1,24 +1,18 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import Head from 'next/head';
 import Layout from '../../components/layout';
+import Code from '../../components/code';
 import { getAllPostIds, getPostData, PostData } from '../../lib/posts';
 import Date from '../../components/date';
 
 const Post = ({ postData }: { postData: PostData }) => (
-  <Layout
-    home={false}
-    title={postData.title}
-    description={postData.description}
-  >
+  <Layout title={postData.title} description={postData.description}>
     <>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <article>
-        <h1 className="text-4xl tracking-tight font-extrabold">{postData.title}</h1>
+      <article className="container my-5 p-3 hover:opacity-75 bg-gray-600 rounded">
+        <h1 className="text-3xl">{postData.title}</h1>
         <div className="mb-4">
           <Date dateString={postData.date} />
         </div>
+        <Code language={postData.language} code={postData.code} />
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </>

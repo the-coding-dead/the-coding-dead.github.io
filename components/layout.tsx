@@ -1,20 +1,20 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import Header from './header';
+import Footer from './footer';
 import configs from '../lib/configs';
 
 const Layout = ({
   children,
-  home = false,
   title = '',
   description = '',
 }: {
   children: JSX.Element;
-  home: boolean;
   title?: string;
   description?: string;
 }) => (
-  <div className="container mx-auto px-4">
+  <>
     <Head>
+      <title>{title || configs.siteTitle}</title>
       <link rel="icon" href="/favicon.ico" />
       <meta name="description" content={description || configs.description} />
       <meta property="og:image" content={configs.ogImage} />
@@ -25,13 +25,14 @@ const Layout = ({
       />
       <meta name="twitter:card" content="summary" />
     </Head>
-    <main>{children}</main>
-    {!home && (
-      <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-        <Link href="/">← Back to home</Link>
+    <div className="h-screen flex flex-col min-h-screen bg-gray-700 text-gray-300">
+      <Header />
+      <div className="container px-4 mx-auto flex-grow bg-gray-700">
+        <main>{children}</main>
       </div>
-    )}
-  </div>
+      <Footer />
+    </div>
+  </>
 );
 
 export default Layout;
