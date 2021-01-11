@@ -25,9 +25,9 @@ const Layout = ({
       />
       <meta name="twitter:card" content="summary" />
     </Head>
-    <div className="h-screen flex flex-col min-h-screen bg-gray-700 text-gray-300">
+    <div className="h-screen flex flex-col min-h-screen">
       <Header />
-      <div className="container px-4 mx-auto flex-grow bg-gray-700">
+      <div className="container px-4 mx-auto flex-grow">
         <main>{children}</main>
       </div>
       <Footer />

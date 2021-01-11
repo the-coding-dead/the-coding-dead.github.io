@@ -7,7 +7,7 @@ import Date from '../../components/date';
 const Post = ({ postData }: { postData: PostData }) => (
   <Layout title={postData.title} description={postData.description}>
     <>
-      <article className="container my-5 p-3 hover:opacity-75 bg-gray-600 rounded">
+      <article className="container my-5 p-3 bg-gray-600 rounded">
         <h1 className="text-3xl">{postData.title}</h1>
         <div className="mb-4">
           <Date dateString={postData.date} />
