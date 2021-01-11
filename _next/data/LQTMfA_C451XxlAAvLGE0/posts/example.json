@@ -1,0 +1,1 @@
+{"pageProps":{"postData":{"id":"example","code":"package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(\"example\")\n}\n","language":"go","contentHtml":"<p>Example</p>\n","title":"Example","date":"2020-01-01","description":"今回はExampleについて"}},"__N_SSG":true}
