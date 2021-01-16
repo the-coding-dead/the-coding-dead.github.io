@@ -5,3 +5,37 @@
 body {
   @apply bg-gray-700 text-gray-300 font-sans;
 }
+
+@layer base {
+  h1 {
+    @apply text-2xl m-2.5 font-bold;
+  }
+
+  h2 {
+    @apply text-xl m-3 font-bold;
+  }
+
+  h3 {
+    @apply text-lg m-4 font-bold;
+  }
+
+  pre {
+    @apply border-double bg-gray-700 overflow-x-scroll overscroll-auto my-2 p-2;
+  }
+
+  ul {
+    @apply list-disc pl-4;
+  }
+
+  li {
+    @apply my-2;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  :link {
+    @apply underline;
+  }
+}

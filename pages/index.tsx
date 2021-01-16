@@ -6,7 +6,7 @@ import HeadLine from '../components/headline';
 const Home = ({ allPostsData }: { allPostsData: PostData[] }) => (
   <Layout>
     <section>
-      <ul className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <ul className="grid grid-cols-1 lg:grid-cols-2 gap-2 list-none px-0">
         {allPostsData.map((postData) => (
           <li key={postData.id}>
             <HeadLine postData={postData} />
