@@ -4,11 +4,11 @@
 
 @import url(prism-themes/themes/prism-duotone-sea.css);
 
-body {
-  @apply bg-gray-700 text-gray-300 font-sans;
-}
-
 @layer base {
+  body {
+    @apply bg-gray-700 text-gray-300 font-sans;
+  }
+
   h1 {
     @apply text-2xl m-2.5 font-bold;
   }
