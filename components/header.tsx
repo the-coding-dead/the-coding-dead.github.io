@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const Header = () => (
-  <div className="bg-gray-800 h-auto p-3">
+  <div className="bg-gray-800 h-auto w-screen p-3">
     <div className="cursor-pointer hover:opacity-75">
       <Link href="/">
         <div>
