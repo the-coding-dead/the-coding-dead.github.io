@@ -15,7 +15,7 @@ const Home = ({ allPostsData }: { allPostsData: PostData[] }) => (
       </ul>
     </section>
   </Layout>
-)
+);
 
 export default Home;
 
