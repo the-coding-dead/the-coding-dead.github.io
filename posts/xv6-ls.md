@@ -15,7 +15,9 @@ GNU とか BSD のは記述量とか多そうだったので教育用に作ら�
 
 [github.com/mit-pdos/xv6-riscv](https://github.com/mit-pdos/xv6-riscv)
 
-([github.com/mit-pdos/xv6-public](https://github.com/mit-pdos/xv6-public)はもうメンテナンスされていないらしいです。)
+([github.com/mit-pdos/xv6-public](https://github.com/mit-pdos/xv6-public)
+
+はもうメンテナンスされていないらしいです。)
 
 ## ls
 
@@ -123,6 +125,8 @@ ls(char *path)
 # Rewrite
 
 すべて自作の関数のため、一つ一つ見ていくのは時間がかかるので c11 で書き直してみました。
+
+[myls](https://github.com/the-coding-dead/code/blob/main/xv6-ls/myls.c)
 
 ```c
 void ls(char *path) {
