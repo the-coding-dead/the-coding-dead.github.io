@@ -1,0 +1,1 @@
+{"pageProps":{"allPostsData":[{"id":"xv6-ls","code":"int main(int argc, char *argv[]) {\n  if (argc < 2) {\n    ls(\".\");\n    exit(0);\n  }\n\n  for (int i = 1; i < argc; i++)\n    ls(argv[i]);\n\n  exit(0);\n}\n","language":"c","title":"xv6 - ls","date":"2021-01-16","description":"今日は最初ということで教育用のlinuxのlsを読みます。"}]},"__N_SSG":true}
