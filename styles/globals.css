@@ -35,7 +35,7 @@ body {
     @apply list-decimal;
   }
 
-  :link {
-    @apply underline;
+  a {
+    @apply text-green-600;
   }
 }

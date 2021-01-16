@@ -10,7 +10,7 @@ const Article = ({ postData }: { postData: PostData }) => (
     <Date dateString={postData.date} />
     <Code language={postData.language} code={postData.code} />
     <div
-      className="break-words ..."
+      className="break-words"
       dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
     />
   </article>
