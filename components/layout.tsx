@@ -14,11 +14,18 @@ const Layout = ({
 }) => (
   <>
     <Head>
-      <title>{title || configs.siteTitle}</title>
+      <title>
+        {(title && `${configs.siteTitle} | ${title}`) || configs.siteTitle}
+      </title>
       <link rel="icon" href="/favicon.ico" />
       <meta name="description" content={description || configs.description} />
       <meta property="og:image" content={configs.ogImage} />
-      <meta name="og:title" content={title || configs.siteTitle} />
+      <meta
+        name="og:title"
+        content={
+          (title && `${configs.siteTitle} | ${title}`) || configs.siteTitle
+        }
+      />
       <meta
         name="og:description"
         content={description || configs.description}

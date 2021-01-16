@@ -10,19 +10,19 @@
   }
 
   h1 {
-    @apply text-2xl m-2.5 font-bold;
+    @apply text-2xl my-2.5 font-bold;
   }
 
   h2 {
-    @apply text-xl m-3 font-bold;
+    @apply text-xl my-3 font-bold;
   }
 
   h3 {
-    @apply text-lg m-4 font-bold;
+    @apply text-lg my-4 font-bold;
   }
 
   pre {
-    @apply border-double bg-gray-700 overflow-x-scroll overscroll-auto my-2 p-2;
+    @apply border-double overflow-x-scroll overscroll-auto my-2 p-2;
   }
 
   ul {
@@ -30,7 +30,7 @@
   }
 
   li {
-    @apply my-2;
+    @apply my-1;
   }
 
   ol {
@@ -38,6 +38,6 @@
   }
 
   a {
-    @apply text-green-600;
+    @apply text-green-200;
   }
 }
