@@ -9,19 +9,19 @@ language: "c"
 
 GNU とか BSD のは記述量とか多そうだったので教育用に作られた Linux である[xv6](https://pdos.csail.mit.edu/6.828/2012/xv6.html)のなかの ls を読んでみます。
 
-ちなみに私の C 言語レベルは[詳説 C ポインタ](https://amzn.to/35Nc5Bn)を読んで理解したというレベルです。
+ちなみに私の C 言語のレベルは[詳説 C ポインタ](https://amzn.to/35Nc5Bn)を読んで理解したというレベルです。読めるけど書けないというやつです。
 
 # Repository
 
 [github.com/mit-pdos/xv6-riscv](https://github.com/mit-pdos/xv6-riscv)
 
-([github.com/mit-pdos/xv6-public](https://github.com/mit-pdos/xv6-public)
+ちなみに
 
-はもうメンテナンスされていないらしいです。)
+[github.com/mit-pdos/xv6-public](https://github.com/mit-pdos/xv6-public)はもうメンテナンスされていないらしいです。
 
 ## ls
 
-[対象コード](https://github.com/mit-pdos/xv6-riscv/blob/riscv/user/ls.c)
+コード: [ls.c](https://github.com/mit-pdos/xv6-riscv/blob/riscv/user/ls.c)
 
 ## Reading
 
@@ -60,28 +60,28 @@ ls(char *path)
   struct dirent de;
   struct stat st;
 
-  // #1
+  // 1
   if((fd = open(path, 0)) < 0){
     fprintf(2, "ls: cannot open %s\n", path);
     return;
   }
 
-  // #2
+  // 2
   if(fstat(fd, &st) < 0){
     fprintf(2, "ls: cannot stat %s\n", path);
     close(fd);
     return;
   }
 
-  // #3
+  // 3
   switch(st.type){
   case T_FILE:
-    // #4
+    // 4
     printf("%s %d %d %l\n", fmtname(path), st.type, st.ino, st.size);
     break;
 
   case T_DIR:
-    // #5
+    // 5
     if(strlen(path) + 1 + DIRSIZ + 1 > sizeof buf){
       printf("ls: path too long\n");
       break;
@@ -89,7 +89,7 @@ ls(char *path)
     strcpy(buf, path);
     p = buf+strlen(buf);
     *p++ = '/';
-    // #6
+    // 6
     while(read(fd, &de, sizeof(de)) == sizeof(de)){
       if(de.inum == 0)
         continue;
@@ -99,7 +99,7 @@ ls(char *path)
         printf("ls: cannot stat %s\n", buf);
         continue;
       }
-      // #7
+      // 7
       printf("%s %d %d %d\n", fmtname(buf), st.type, st.ino, st.size);
     }
     break;
@@ -110,23 +110,19 @@ ls(char *path)
 
 流れはざっとこんなもん
 
-- \#1 パスをオープン
-
-- \#2 パスの情報取得
-
-- \#3 パスのタイプによって分岐
-
-- \#4 ファイルであれば、出力
-
-- \#5 ディレクトリの場合
-- \#6 ディレクトリ内のファイルをあるだけ読み込む
-- \#7 出力
+- 1 パスをオープン
+- 2 パスの情報取得
+- 3 パスのタイプによって分岐
+- 4 ファイルであれば、出力
+- 5 ディレクトリの場合
+- 6 ディレクトリ内のファイルをあるだけ読み込む
+- 7 出力
 
 # Rewrite
 
-すべて自作の関数のため、一つ一つ見ていくのは時間がかかるので c11 で書き直してみました。
+すべて自作の関数のため、一つ一つ見ていくのは時間がかかるので C11 で書き直してみました。
 
-[myls](https://github.com/the-coding-dead/code/blob/main/xv6-ls/myls.c)
+コード: [myls](https://github.com/the-coding-dead/code/blob/main/xv6-ls/myls.c)
 
 ```c
 void ls(char *path) {
@@ -141,31 +137,31 @@ void ls(char *path) {
     printf("%s %d %lu %ld\n", fmtname(path), st.st_mode, st.st_ino, st.st_size);
   }
 
-  // #1
+  // 1
   if (S_ISDIR(st.st_mode)) {
     char buf[512];
-    // #2
+    // 2
     if (strlen(path) + 1 + DIRSIZ + 1 > sizeof buf) {
       printf("ls: path too long\n");
       return;
     }
 
-    // #3
+    // 3
     strcpy(buf, path);
     char *p = buf + strlen(buf);
     *p++ = '/';
 
-    // #4
+    // 4
     DIR *dir = opendir(path);
     for (struct dirent *de = readdir(dir); de != NULL; de = readdir(dir)) {
-      // #5
+      // 5
       memmove(p, de->d_name, DIRSIZ);
       p[DIRSIZ] = 0;
       if (stat(buf, &st) < 0) {
         printf("ls: cannot stat %s\n", buf);
         continue;
       }
-      // #6
+      // 6
       printf("%s %d %lu %ld\n", fmtname(buf), st.st_mode, st.st_ino,
              st.st_size);
     }
@@ -177,9 +173,9 @@ void ls(char *path) {
 
 多分もう少し短く書けると思います。(fmtname 関数はそのまま使用)
 
-- \#1 のディレクトリを対象とした処理はいつもほぼ c を読んでいないためかなり手こずりました
+- 1 のディレクトリを対象とした処理はいつもほぼ C を読んでいないためかなり手こずりました
 
-- \#2 ここは普段可変長の配列を使っているとほとんど意識しないような処理
+- 2 ここは普段可変長の配列を使っているとほとんど意識しないような処理
   - malloc とかで動的に長さを設定できるようにしても良いかもしれない
 
 ```c
@@ -189,7 +185,7 @@ if (strlen(path) + 1 + DIRSIZ + 1 > sizeof buf) {
 }
 ```
 
-- \#3 こういう配列をポインタで操作してくのは久しぶりに c やるとよくわかんなくなるなあ
+- 3 こういう配列をポインタで操作してくのは久しぶりに C やるとよくわかんなくなるなあ
   - buf はディレクトリとファイル名を`/`でつなげたものを格納する場所
   - p は格納していく際に一番後ろのメモリの位置を指すカーソルとして使用する
 
@@ -199,21 +195,21 @@ char *p = buf + strlen(buf);
 *p++ = '/';
 ```
 
-- \#4 directory のなかのファイルを一覧していく
+- 4 directory のなかのファイルを一覧していく
 
 ```c
 DIR *dir = opendir(path);
 for (struct dirent *de = readdir(dir); de != NULL; de = readdir(dir)) {
 ```
 
-- \#5 p にファイル名をコピーして、終端 null 文字を最後に入れる(`'\0'`を入れるのと同じ)
+- 5 p にファイル名をコピーして、終端 null 文字を最後に入れる(`'\0'`を入れるのと同じ)
 
 ```c
 memmove(p, de->d_name, DIRSIZ);
 p[DIRSIZ] = 0;
 ```
 
-- \#6 出力
+- 6 出力
   - verb の数が多すぎて大変だなあ
   - go は楽で良い
   - 使いたいときだけ複雑なものを使用すれば良いから
@@ -225,7 +221,7 @@ printf("%s %d %lu %ld\n", fmtname(buf), st.st_mode, st.st_ino,
 
 ## Conclusion
 
-久しぶりに c のコードを読んだけど時間かかりました。。。
+久しぶりに C のコードを読んだけど時間かかりました。。。
 
 やってることは単純だけどポインタの動きを追いながら読むのは勉強になります。
 

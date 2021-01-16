@@ -5,7 +5,7 @@ const Header = () => (
     <div className="cursor-pointer hover:opacity-75">
       <Link href="/">
         <div>
-          <p className="text-3xl font-bold ">The Coding Dead</p>
+          <p className="text-3xl font-bold mb-2">The Coding Dead</p>
           <p className="text-xs">
             コードを窒息するほど読んで
             <br />
