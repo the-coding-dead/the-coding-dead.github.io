@@ -23,7 +23,8 @@ const Layout = ({
       <meta
         name="og:title"
         content={
-          (title && `${configs.siteTitle} | ${title}`) || configs.siteTitle
+          (title && `${configs.siteTitle} | ${title}`)
+          || `${configs.siteTitle} - ${configs.description}`
         }
       />
       <meta
@@ -32,7 +33,7 @@ const Layout = ({
       />
       <meta name="twitter:card" content="summary" />
     </Head>
-    <div className="container h-screen flex flex-col min-h-screen">
+    <div className="container h-screen flex flex-col min-h-screen mx-auto">
       <Header />
       <div className="container mx-2 px-4 mx-auto flex-grow">
         <main>{children}</main>
