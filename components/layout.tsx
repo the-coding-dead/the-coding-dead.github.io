@@ -23,7 +23,7 @@ const Layout = ({
       <meta
         name="og:title"
         content={
-          (title && `${configs.siteTitle} | ${title}`)
+          (title && `${configs.siteTitle} - ${title}`)
           || `${configs.siteTitle} - ${configs.description}`
         }
       />
