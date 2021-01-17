@@ -7,7 +7,7 @@ language: "go"
 
 今日は[julienschmidt/httprouter](https://github.com/julienschmidt/httprouter)です。
 
-たまに雑なAPIをGoで作るときに使うのでどのように実装されているか気になってました。
+たまに雑な API を Go で作るときに使うのでどのように実装されているか気になってました。
 
 見てみます。
 
@@ -19,7 +19,9 @@ language: "go"
 
 [httprouter](https://github.com/julienschmidt/httprouter)の一番の`net/http`との違いは`Named parameters`だと思います。
 
-`router.GET("/hello/:name", Hello)`と登録すると`httprouter.Params.ByName("name")`でパラメータを取得できます。
+`router.GET("/hello/:name", Hello)`と登録することで
+
+`httprouter.Params.ByName("name")`でパラメータを取得できます。
 
 まだいっぱい特徴があるのですが、今回はこの機能に絞ってコードを読んでいきます。
 
@@ -104,7 +106,7 @@ func (r *Router) DELETE(path string, handle Handle) {
 
 `*Router.Handle`をラップしているだけです。
 
-`*Router.Handle`にHTTPメソッド、パス、`Handle`型を渡します。
+`*Router.Handle`に HTTP メソッド、パス、`Handle`型を渡します。
 
 `Handle`型は
 
@@ -330,11 +332,11 @@ type node struct {
 
 なんとなく見えてきました。
 
-`node`構造体でパスと`Handle`型を紐付けていて、`node`をHTTPメソッドごとにツリー構造で管理しているようです。
+`node`構造体でパスと`Handle`型を紐付けていて、`node`を HTTP メソッドごとにツリー構造で管理しているようです。
 
 では`*Router.Handle`に戻ります。
 
-4. ここは登録したいHTTPメソッドがまだ`*Router.trees`に登録されていなければ初期化しているようです。
+4. ここは登録したい HTTP メソッドがまだ`*Router.trees`に登録されていなければ初期化しているようです。
 
 ```go
 	root := r.trees[method]
@@ -348,7 +350,7 @@ type node struct {
 
 `*Router.allowed(path, reqMethod string) (allow string)`は長いので割愛。
 
-一応読みましたが、登録されているHTTPメソッドをカンマ区切りで返すだけです。
+一応読みましたが、登録されている HTTP メソッドをカンマ区切りで返すだけです。
 
 しかもその結果を格納している`*Router.globalAllowed`はどこでも使われていません。
 
@@ -480,9 +482,9 @@ walk:
 
 # Conclusion
 
-httprouterの処理の流れとしては
+httprouter の処理の流れとしては
 
-1. HTTPリクエストごとにパスを管理
+1. HTTP リクエストごとにパスを管理
 2. パスと実行したいハンドラをツリー構造で管理
 
 という感じです。
