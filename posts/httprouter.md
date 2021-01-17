@@ -1,7 +1,7 @@
 ---
 title: "httprouter"
 date: "2021-01-17"
-description: "httprouter"
+description: "Goの有名パッケージhttprouterを読みます。"
 language: "go"
 ---
 
