@@ -15,7 +15,8 @@ const Layout = ({
   <>
     <Head>
       <title>
-        {(title && `${configs.siteTitle} - ${title}`) || configs.siteTitle}
+        {(title && `${title} - ${configs.siteTitle}`)
+          || `${configs.siteTitle} - ${configs.description}`}
       </title>
       <link rel="icon" href="/favicon.ico" />
       <meta name="description" content={description || configs.description} />
@@ -23,7 +24,7 @@ const Layout = ({
       <meta
         name="og:title"
         content={
-          (title && `${configs.siteTitle} - ${title}`)
+          (title && `${title} - ${configs.siteTitle}`)
           || `${configs.siteTitle} - ${configs.description}`
         }
       />
