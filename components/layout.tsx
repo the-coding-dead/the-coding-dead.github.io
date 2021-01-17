@@ -15,7 +15,7 @@ const Layout = ({
   <>
     <Head>
       <title>
-        {(title && `${configs.siteTitle} | ${title}`) || configs.siteTitle}
+        {(title && `${configs.siteTitle} - ${title}`) || configs.siteTitle}
       </title>
       <link rel="icon" href="/favicon.ico" />
       <meta name="description" content={description || configs.description} />
