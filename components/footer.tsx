@@ -1,8 +1,8 @@
 const Footer = () => (
   <footer className="container mx-auto pb-5 text-center">
-    The Coding Dead written by
+    ©
     {' '}
-    <a href="https://github.com/nasjp">nasjp</a>
+    <a href="https://github.com/the-coding-dead">github.com/the-coding-dead</a>
   </footer>
 );
 
