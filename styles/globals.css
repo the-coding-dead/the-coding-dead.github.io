@@ -34,10 +34,14 @@
   }
 
   ol {
-    @apply list-decimal;
+    @apply list-decimal pl-4;
   }
 
   a {
     @apply text-green-200;
+  }
+
+  code {
+    @apply bg-gray-700 mx-1 px-1 rounded font-mono;
   }
 }

@@ -19,13 +19,13 @@ GNU とか BSD のは記述量とか多そうだったので教育用に作ら�
 
 [github.com/mit-pdos/xv6-public](https://github.com/mit-pdos/xv6-public)はもうメンテナンスされていないらしいです。
 
-## ls
+# ls
 
 コード: [ls.c](https://github.com/mit-pdos/xv6-riscv/blob/riscv/user/ls.c)
 
-## Reading
+# Reading
 
-### main function
+## main function
 
 ```c
 int
@@ -219,7 +219,7 @@ printf("%s %d %lu %ld\n", fmtname(buf), st.st_mode, st.st_ino,
        st.st_size);
 ```
 
-## Conclusion
+# Conclusion
 
 久しぶりに C のコードを読んだけど時間かかりました。。。
 
