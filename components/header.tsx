@@ -7,7 +7,7 @@ const Header = () => (
         <div>
           <p className="text-3xl font-bold mb-2">The Coding Dead</p>
           <p className="text-xs">
-            コードを窒息するほど読んで
+            窒息するほどコードを読んで
             <br />
             スーパーエンジニアになった気になる
           </p>
