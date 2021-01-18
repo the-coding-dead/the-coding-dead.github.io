@@ -34,12 +34,14 @@ const Layout = ({
       />
       <meta name="twitter:card" content="summary" />
     </Head>
-    <div className="container h-screen flex flex-col min-h-screen">
-      <Header />
-      <div className="container mx-2 px-4 mx-auto flex-grow">
-        <main>{children}</main>
+    <Header />
+    <div className="container mx-auto">
+      <div className="container h-screen flex flex-col">
+        <div className="container px-2 flex-grow ">
+          <main>{children}</main>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   </>
 );

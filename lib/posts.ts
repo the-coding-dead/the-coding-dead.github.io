@@ -24,6 +24,7 @@ export type PostData = {
   title?: string;
   date?: string;
   description?: string;
+  serialization?: string[];
 };
 
 const getPostCode = (id: string, language: string) => {

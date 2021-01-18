@@ -3,6 +3,7 @@ title: "httprouter"
 date: "2021-01-17"
 description: "Goの有名パッケージhttprouterを読みます。"
 language: "go"
+serialization: ["httprouter", "httprouter2"]
 ---
 
 今日は[julienschmidt/httprouter](https://github.com/julienschmidt/httprouter)です。
@@ -170,7 +171,7 @@ func (ps Params) ByName(name string) string {
 func (r *Router) Handle(method, path string, handle Handle) {
 	varsCount := uint16(0)
 
-  // 1
+	// 1
 	if method == "" {
 		panic("method must not be empty")
 	}
@@ -181,18 +182,18 @@ func (r *Router) Handle(method, path string, handle Handle) {
 		panic("handle must not be nil")
 	}
 
-  // 2
+	// 2
 	if r.SaveMatchedRoutePath {
 		varsCount++
 		handle = r.saveMatchedRoutePath(path, handle)
 	}
 
-  // 3
+	// 3
 	if r.trees == nil {
 		r.trees = make(map[string]*node)
 	}
 
-  // 4
+	// 4
 	root := r.trees[method]
 	if root == nil {
 		root = new(node)
@@ -201,7 +202,7 @@ func (r *Router) Handle(method, path string, handle Handle) {
 		r.globalAllowed = r.allowed("*", "")
 	}
 
-  // 5
+	// 5
 	root.addRoute(path, handle)
 
 	// Update maxParams
@@ -223,13 +224,13 @@ func (r *Router) Handle(method, path string, handle Handle) {
 
 ```go
 if method == "" {
-  panic("method must not be empty")
+	panic("method must not be empty")
 }
 if len(path) < 1 || path[0] != '/' {
-  panic("path must begin with '/' in path '" + path + "'")
+	panic("path must begin with '/' in path '" + path + "'")
 }
 if handle == nil {
-  panic("handle must not be nil")
+	panic("handle must not be nil")
 }
 ```
 
@@ -245,7 +246,7 @@ func (r *Router) saveMatchedRoutePath(path string, handle Handle) Handle {
 		if ps == nil {
 			psp := r.getParams()
 			ps = (*psp)[0:1]
-      // ここ
+			// ここ
 			ps[0] = Param{Key: MatchedRoutePathParam, Value: path}
 			handle(w, req, ps)
 			r.putParams(psp)
@@ -259,8 +260,8 @@ func (r *Router) saveMatchedRoutePath(path string, handle Handle) Handle {
 
 ```go
 if r.SaveMatchedRoutePath {
-  varsCount++
-  handle = r.saveMatchedRoutePath(path, handle)
+	varsCount++
+	handle = r.saveMatchedRoutePath(path, handle)
 }
 ```
 
@@ -268,7 +269,7 @@ if r.SaveMatchedRoutePath {
 
 ```go
 if r.trees == nil {
-  r.trees = make(map[string]*node)
+	r.trees = make(map[string]*node)
 }
 ```
 
