@@ -1,7 +1,7 @@
 ---
 title: "httprouter2"
 date: "2021-01-18"
-description: "前回の続き。httprouterを読みます。"
+description: "前回の続きです。httprouterを読みます。"
 language: "go"
 serialization: ["httprouter", "httprouter2"]
 ---
