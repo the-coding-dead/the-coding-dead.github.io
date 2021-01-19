@@ -6,13 +6,11 @@ import Pin from './pin';
 
 const Serialization = ({ thisId, ids }: { thisId: string; ids: string[] }) => (
   <ol>
-    {ids
-      .map((id) => (id === thisId ? 'この記事' : id))
-      .map((id) => (
-        <li key={id}>
-          <Link href={id}>{id}</Link>
-        </li>
-      ))}
+    {ids.map((id) => (
+      <li key={id}>
+        <Link href={id}>{id === thisId ? 'この記事' : id}</Link>
+      </li>
+    ))}
   </ol>
 );
 
