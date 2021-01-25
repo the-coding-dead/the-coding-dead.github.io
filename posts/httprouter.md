@@ -3,7 +3,7 @@ title: "httprouter"
 date: "2021-01-17"
 description: "Goの有名パッケージhttprouterを読みます。"
 language: "go"
-serialization: ["httprouter", "httprouter2"]
+serialization: ["httprouter", "httprouter2", "httprouter3"]
 ---
 
 今日は[julienschmidt/httprouter](https://github.com/julienschmidt/httprouter)です。

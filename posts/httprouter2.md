@@ -3,7 +3,7 @@ title: "httprouter2"
 date: "2021-01-18"
 description: "前回の続きです。httprouterを読みます。"
 language: "go"
-serialization: ["httprouter", "httprouter2"]
+serialization: ["httprouter", "httprouter2", "httprouter3"]
 ---
 
 前回から引き続き Go の[julienschmidt/httprouter](https://github.com/julienschmidt/httprouter)を読んでいきます！
