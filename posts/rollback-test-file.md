@@ -17,6 +17,8 @@ Goでテスト書いているときに(というかどんな言語でも)
 
 あるよね(たまにね)
 
+なのでそういう便利な関数を書いてみました。
+
 # Sample Code
 
 [DeferRollbackDir](https://github.com/the-coding-dead/code/blob/main/testutils/defer_rollback_dir.go)
