@@ -35,13 +35,13 @@ func TestHoge(t *testing.T) {
 }
 ```
 
-これを作るために`os`パッケージ周りを再復習しました。
+これを作るために[os](https://golang.org/pkg/os)パッケージ周りを再復習しました。
 
 ## [os.Open](https://golang.org/pkg/os/#Open)
 
 これは読み込むためにしか利用できません。
 
-os.OpenFileを読み込み専用で開いています。
+実装上は[os.OpenFile](https://golang.org/pkg/os/#OpenFile)を読み込み専用で開いています。
 
 ```go
 func Open(name string) (*File, error) {
@@ -51,11 +51,11 @@ func Open(name string) (*File, error) {
 
 ## [os.Create](https://golang.org/pkg/os/#Create)
 
-これは作成時のみ
+これは作成時用です。
 
 存在している場合はtruncateします。
 
-ディレクトリ内のファイルの退避として`os.Create`を使用します。
+ディレクトリ内のファイルの退避として[os.Create](https://golang.org/pkg/os/#Create)を使用します。
 
 ```go
 func Create(name string) (*File, error) {
@@ -83,7 +83,7 @@ func Create(name string) (*File, error) {
 
 ## [os.Stat](https://golang.org/pkg/os/#Stat)
 
-この関数は対象のファイルまたはディレクトリが存在しないときに`os.ErrNotExist`を返却します。
+この関数は対象のファイルまたはディレクトリが存在しないときに[os.ErrNotExist](https://golang.org/pkg/os/#pkg-variables)を返却します。
 
 こんな感じで[os.Mkdir](https://golang.org/pkg/os/#Mkdir)と組み合わせます。
 
@@ -97,7 +97,7 @@ if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
 
 ## [os.OpenFile](https://golang.org/pkg/os/#OpenFile)
 
-[DeferRollbackDir](https://github.com/the-coding-dead/code/blob/main/testutils/defer_rollback_dir.go)はファイル復元時に、もとのPermissionで復元したいのでPermissionを指定できる`os.OpenFile`でファイルを作成します。
+[DeferRollbackDir](https://github.com/the-coding-dead/code/blob/main/testutils/defer_rollback_dir.go)はファイル復元時に、もとのPermissionで復元したいのでPermissionを指定できる[os.OpenFile](https://golang.org/pkg/os/#OpenFile)でファイルを作成します。
 
 ## Conclusion
 
